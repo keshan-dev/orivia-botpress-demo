@@ -639,6 +639,12 @@ a:hover {
   display: block;
 }
 
+/* Hide Botpress default floating blue button so our luxury gold button triggers it */
+iframe[name="fab"] {
+  display: none !important;
+}
+
+
 /* Footer */
 .site-footer {
   margin-top: auto;
