@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — ORIVIA Atelier</title>
+  <meta name="description" content="Transparent explanation of data processing, Cloudflare Turnstile, and Botpress third-party AI assistant data.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="ORIVIA Home">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="38" stroke="#D4AF37" stroke-width="3" opacity="0.6"/>
+          <polygon points="50,26 56,44 74,50 56,56 50,74 44,56 26,50 44,44" fill="#D4AF37"/>
+        </svg>
+        <span>ORIVIA</span>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="experiences.html">Experiences</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-cta">
+        <a href="contact.html" class="btn btn-primary">Inquire</a>
+      </div>
+
+      <button class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main style="padding-top: 100px;">
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Transparency</span>
+          <h1 class="section-title">Privacy Policy</h1>
+          <p>Effective Date: September 26, 2026 &bull; ORIVIA Demonstration Platform</p>
+        </div>
+
+        <div style="max-width: 800px; margin: 0 auto; color: var(--color-text-main); font-size: 1rem; line-height: 1.8;">
+          <h2 style="font-size: 1.5rem; margin: 2rem 0 1rem 0; color: var(--color-gold);">1. Overview & Demonstration Nature</h2>
+          <p style="margin-bottom: 1.5rem;">
+            ORIVIA is a demonstration travel platform designed to showcase modern web architecture, third-party AI chatbot integration, and automated security auditing. This policy outlines how information submitted through the website, contact inquiries, and interactive chat tools is handled.
+          </p>
+
+          <h2 style="font-size: 1.5rem; margin: 2rem 0 1rem 0; color: var(--color-gold);">2. Information Collected via First-Party Contact Form</h2>
+          <p style="margin-bottom: 1.5rem;">
+            When you submit an inquiry through <code>/contact.html</code>, our first-party Cloudflare Worker API processes:
+          </p>
+          <ul style="margin-left: 2rem; margin-bottom: 1.5rem; color: var(--color-text-muted);">
+            <li>Your submitted name, email address, and itinerary vision.</li>
+            <li>Security challenge telemetry (via Cloudflare Turnstile) to verify human submission.</li>
+            <li>Client IP addresses processed ephemerally for rate-limiting and anti-abuse verification.</li>
+          </ul>
+
+          <h2 style="font-size: 1.5rem; margin: 2rem 0 1rem 0; color: var(--color-gold);">3. Third-Party AI Chatbot Processing (Botpress)</h2>
+          <p style="margin-bottom: 1rem;">
+            The interactive conversational assistant available on this site is provided by <strong>Botpress Cloud</strong> (Botpress Inc.). When engaging with the chatbot:
+          </p>
+          <ul style="margin-left: 2rem; margin-bottom: 1.5rem; color: var(--color-text-muted);">
+            <li>Conversation messages are transmitted directly from your browser to Botpress servers (<code>*.botpress.cloud</code>).</li>
+            <li>Data submitted to the chat is governed by <a href="https://botpress.com/legal/privacy" target="_blank" rel="noopener noreferrer">Botpress's Privacy Policy</a>.</li>
+            <li><strong>Strict Warning:</strong> Do not submit passwords, payment card details, bank credentials, or sensitive personal data into the chat window.</li>
+          </ul>
+
+          <h2 style="font-size: 1.5rem; margin: 2rem 0 1rem 0; color: var(--color-gold);">4. Security & Anti-Abuse (Cloudflare)</h2>
+          <p style="margin-bottom: 1.5rem;">
+            To safeguard our infrastructure, this platform utilizes Cloudflare Pages, Cloudflare Turnstile, and Cloudflare Bot Fight Mode. Cloudflare may process network-level telemetry and browser characteristics solely to detect malicious automated crawlers and mitigate distributed denial-of-service (DDoS) events.
+          </p>
+
+          <h2 style="font-size: 1.5rem; margin: 2rem 0 1rem 0; color: var(--color-gold);">5. Data Retention & User Rights</h2>
+          <p style="margin-bottom: 1.5rem;">
+            Because ORIVIA is a demonstration platform, inquiry records are kept for ephemeral validation testing only and are pruned periodically. You may request the deletion of any submitted contact record by emailing <code>privacy@orivia-demo.pages.dev</code>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>&copy; 2026 ORIVIA Atelier. All rights reserved. Fictional demonstration brand.</span>
+        <a href="privacy.html">Privacy</a> &bull; <a href="terms.html">Terms</a> &bull; <a href="faq.html">FAQ</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Dedicated crawler allowance for Rotwatch Auditor
+User-agent: Rotwatch-Auditor
+Allow: /
+
+Sitemap: https://orivia-demo.pages.dev/sitemap.xml

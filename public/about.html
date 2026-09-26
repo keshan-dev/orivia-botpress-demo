@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Atelier — ORIVIA Bespoke Travel</title>
+  <meta name="description" content="The philosophy behind ORIVIA: discretion, rare access, and effortless luxury travel execution.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="ORIVIA Home">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="38" stroke="#D4AF37" stroke-width="3" opacity="0.6"/>
+          <polygon points="50,26 56,44 74,50 56,56 50,74 44,56 26,50 44,44" fill="#D4AF37"/>
+        </svg>
+        <span>ORIVIA</span>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="experiences.html">Experiences</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-cta">
+        <a href="contact.html" class="btn btn-primary">Inquire</a>
+      </div>
+
+      <button class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main style="padding-top: 100px;">
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Philosophy</span>
+          <h1 class="section-title">The Art of Effortless Travel</h1>
+          <p>Founded on a singular premise: true luxury is not excessive ornamentation, but the total elimination of friction and the unlocking of uncompromised wonder.</p>
+        </div>
+
+        <div style="max-width: 820px; margin: 0 auto; color: var(--color-text-main); font-size: 1.05rem; line-height: 1.8;">
+          <h2 style="font-size: 1.8rem; margin: 2rem 0 1rem 0; color: var(--color-gold);">Discretion Over Visibility</h2>
+          <p style="margin-bottom: 1.5rem;">
+            At ORIVIA, our clients do not seek public recognition. Our itineraries are shielded by confidentiality, ensuring that high-profile individuals, families, and private travelers experience total sanctuary without compromise.
+          </p>
+
+          <h2 style="font-size: 1.8rem; margin: 2rem 0 1rem 0; color: var(--color-gold);">In-Person Vetting</h2>
+          <p style="margin-bottom: 1.5rem;">
+            We do not aggregate catalog properties from third-party booking engines. Every estate, yacht captain, and regional host is vetted directly by our founding partners. If a property fails to meet our stringent standards of architectural integrity and acoustic tranquility, it is excluded.
+          </p>
+
+          <h2 style="font-size: 1.8rem; margin: 2rem 0 1rem 0; color: var(--color-gold);">Transparent Technology</h2>
+          <p style="margin-bottom: 2rem;">
+            While we embrace conversational AI to answer informational inquiries seamlessly, we preserve a sacred boundary: all financial transactions, itinerary confirmations, and private arrangements are handled exclusively by licensed human concierge directors.
+          </p>
+
+          <div style="text-align: center; margin-top: 3rem;">
+            <a href="contact.html" class="btn btn-primary" style="padding: 12px 30px;">Speak with an Atelier Director</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Botpress Webchat & Accessible Trigger -->
+  <div id="bp-webchat" aria-hidden="true"></div>
+  <button id="chatbot-toggle-btn" class="chatbot-trigger-btn" aria-label="Open AI Assistant" aria-haspopup="dialog">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+    <span>Ask Concierge</span>
+  </button>
+  <div id="chatbot-fallback" class="chatbot-fallback-card" role="dialog"></div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>&copy; 2026 ORIVIA Atelier. All rights reserved. Fictional demonstration brand.</span>
+        <a href="privacy.html">Privacy</a> &bull; <a href="terms.html">Terms</a> &bull; <a href="faq.html">FAQ</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frequently Asked Questions & Ground Truth — ORIVIA</title>
+  <meta name="description" content="Official ORIVIA booking guidelines, bespoke pricing policy, and AI assistant ground-truth documentation.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="ORIVIA Home">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="38" stroke="#D4AF37" stroke-width="3" opacity="0.6"/>
+          <polygon points="50,26 56,44 74,50 56,56 50,74 44,56 26,50 44,44" fill="#D4AF37"/>
+        </svg>
+        <span>ORIVIA</span>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="experiences.html">Experiences</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="faq.html" class="active">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-cta">
+        <a href="contact.html" class="btn btn-primary">Inquire</a>
+      </div>
+
+      <button class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main style="padding-top: 100px;">
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Ground Truth & Guidelines</span>
+          <h1 class="section-title">Official Atelier Policies</h1>
+          <p>The definitive source of truth regarding ORIVIA bookings, pricing structures, and conversational AI boundaries.</p>
+        </div>
+
+        <div class="faq-list">
+          <!-- Policy 1: Instant Bookings -->
+          <div class="faq-item active">
+            <button class="faq-question" aria-expanded="true">
+              <span>Can I book or pay for an itinerary instantly online?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <strong>Strict Policy: No.</strong> ORIVIA does not offer instant online checkouts, credit card charging, or automated reservations. Because every journey requires customized air logistics, estate buyouts, and security clearance, all reservations must be originated through our formal <a href="contact.html">inquiry process</a> and confirmed directly by a human concierge director.
+            </div>
+          </div>
+
+          <!-- Policy 2: Pricing Structure -->
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Where can I find flat rates and exact prices?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              ORIVIA does not publish fixed prices. Each expedition is bespoke. Pricing is influenced by travel party size, seasonal availability, private aircraft positioning, and custom estate staffing. Any estimate given by our conversational AI assistant is purely illustrative; exact financial terms are provided solely in written client proposals.
+            </div>
+          </div>
+
+          <!-- Policy 3: Conversational AI Scope -->
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>What is the scope and capability of the AI Assistant?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              The ORIVIA digital assistant is powered by Botpress Cloud. It serves exclusively as an informational exploration guide. It does NOT possess access to private customer accounts, cannot verify bank details, cannot process payments, and cannot finalize travel bookings.
+            </div>
+          </div>
+
+          <!-- Policy 4: Security & Sensitive Information -->
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Should I provide payment details or passwords to the chatbot?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <strong>Never.</strong> Neither ORIVIA staff nor our automated assistant will ever ask you for passwords, one-time security codes, full credit card numbers, or API credentials. Do not input confidential personal data into the chat widget.
+            </div>
+          </div>
+
+          <!-- Policy 5: Rotwatch Auditing Notice -->
+          <div id="rotwatch-notice" class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>What is the Rotwatch Auditing Verification Policy?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              ORIVIA maintains an active compliance policy where automated assistants are continuously audited for accuracy and prompt-injection resilience. The platform provides a verifiable public token at <code>/.well-known/rotwatch-verify.txt</code> and head meta verification for the <strong>Rotwatch Audit Engine</strong>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Botpress Webchat & Accessible Trigger -->
+  <div id="bp-webchat" aria-hidden="true"></div>
+  <button id="chatbot-toggle-btn" class="chatbot-trigger-btn" aria-label="Open AI Assistant" aria-haspopup="dialog">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+    <span>Ask Concierge</span>
+  </button>
+  <div id="chatbot-fallback" class="chatbot-fallback-card" role="dialog"></div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>&copy; 2026 ORIVIA Atelier. All rights reserved. Fictional demonstration brand.</span>
+        <a href="privacy.html">Privacy</a> &bull; <a href="terms.html">Terms</a> &bull; <a href="faq.html">FAQ</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

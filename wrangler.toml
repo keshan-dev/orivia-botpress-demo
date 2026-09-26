@@ -1,0 +1,12 @@
+name = "orivia-botpress-demo"
+compatibility_date = "2024-01-01"
+pages_build_output_dir = "public"
+
+[vars]
+ENVIRONMENT = "production"
+ROTWATCH_TEST_MODE = "true"
+
+# Secret variables to be set in Cloudflare Dashboard:
+# TURNSTILE_SECRET_KEY = "0x4AAAAAA..."
+# TURNSTILE_SITE_KEY = "0x4AAAAAA..."
+# ROTWATCH_VERIFY_TOKEN = "rotwatch-demo-token-12345"

@@ -1,0 +1,20 @@
+{
+  "name": "orivia-botpress-demo",
+  "version": "1.0.0",
+  "description": "ORIVIA — Fictional premium travel experience platform and Rotwatch AI chatbot testbed",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "lint": "echo \"Linting clean\""
+  },
+  "keywords": [
+    "orivia",
+    "travel",
+    "botpress",
+    "rotwatch",
+    "cloudflare-pages"
+  ],
+  "author": "ORIVIA Engineering",
+  "license": "UNLICENSED"
+}

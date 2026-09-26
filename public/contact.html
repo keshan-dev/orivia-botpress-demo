@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Inquiries — ORIVIA Atelier</title>
+  <meta name="description" content="Initiate a confidential inquiry with the ORIVIA private travel concierge team.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Cloudflare Turnstile Script -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="ORIVIA Home">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="38" stroke="#D4AF37" stroke-width="3" opacity="0.6"/>
+          <polygon points="50,26 56,44 74,50 56,56 50,74 44,56 26,50 44,44" fill="#D4AF37"/>
+        </svg>
+        <span>ORIVIA</span>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="experiences.html">Experiences</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-cta">
+        <a href="contact.html" class="btn btn-primary">Inquire</a>
+      </div>
+
+      <button class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main style="padding-top: 100px;">
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Private Inquiries</span>
+          <h1 class="section-title">Initiate Your Consultation</h1>
+          <p>Please share your intended dates and aspirational destinations. Our concierge directors review each request within 24 hours.</p>
+        </div>
+
+        <div class="form-card">
+          <!-- Live Feedback Region for Accessibility -->
+          <div id="form-status-msg" class="status-msg" aria-live="polite"></div>
+
+          <form id="contact-form" novalidate>
+            <!-- Anti-Spam Honeypot (visually hidden) -->
+            <div style="display:none;" aria-hidden="true">
+              <label for="form-website">Leave blank</label>
+              <input type="text" id="form-website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+              <label for="form-name" class="form-label">Full Name *</label>
+              <input type="text" id="form-name" name="name" class="form-input" placeholder="e.g. Eleanor Sterling" required minlength="2" maxlength="100">
+            </div>
+
+            <div class="form-group">
+              <label for="form-email" class="form-label">Confidential Email *</label>
+              <input type="email" id="form-email" name="email" class="form-input" placeholder="e.g. eleanor@sterling-family.com" required maxlength="100">
+            </div>
+
+            <div class="form-group">
+              <label for="form-message" class="form-label">Journey Vision & Dates *</label>
+              <textarea id="form-message" name="message" class="form-textarea" placeholder="Detail your desired sanctuaries, approximate party size, and target seasonal window..." required minlength="10" maxlength="2000"></textarea>
+            </div>
+
+            <!-- Cloudflare Turnstile Challenge Container -->
+            <div class="turnstile-box">
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAAAxPlaceholderSiteKey" data-theme="dark"></div>
+            </div>
+
+            <button type="submit" id="form-submit-btn" class="btn btn-primary" style="width: 100%; padding: 14px;">
+              Submit Inquiry
+            </button>
+          </form>
+
+          <div class="ai-disclosure-banner" style="margin-top: 1.5rem;">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            <span>First-party submissions are encrypted and reviewed by human staff only. Inquiries are subject to our <a href="privacy.html" style="text-decoration: underline;">Privacy Policy</a>.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Botpress Webchat & Accessible Trigger -->
+  <div id="bp-webchat" aria-hidden="true"></div>
+  <button id="chatbot-toggle-btn" class="chatbot-trigger-btn" aria-label="Open AI Assistant" aria-haspopup="dialog">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+    <span>Ask Concierge</span>
+  </button>
+  <div id="chatbot-fallback" class="chatbot-fallback-card" role="dialog"></div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>&copy; 2026 ORIVIA Atelier. All rights reserved. Fictional demonstration brand.</span>
+        <a href="privacy.html">Privacy</a> &bull; <a href="terms.html">Terms</a> &bull; <a href="faq.html">FAQ</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>
