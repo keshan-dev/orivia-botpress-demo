@@ -1,6 +1,6 @@
 /**
  * ORIVIA — Botpress Cloud Webchat Integration
- * Sandboxed loader supporting Botpress Cloud window.botpress v2 API with fallback UI
+ * Production loader for Botpress v2 API with CSP & live environment support
  */
 
 const BOTPRESS_CONFIG = {
@@ -12,7 +12,7 @@ const BOTPRESS_CONFIG = {
 
 class OriviaChatbot {
   constructor() {
-    this.isLoaded = false;
+    this.isInitialized = false;
     this.triggerBtn = document.getElementById('chatbot-toggle-btn');
     this.fallbackCard = document.getElementById('chatbot-fallback');
     this.setupFallbackContent();
@@ -20,57 +20,61 @@ class OriviaChatbot {
   }
 
   init() {
+    // 1. Wire the gold "ASK CONCIERGE" button
     if (this.triggerBtn) {
       this.triggerBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        this.toggleChat();
+        this.openChat();
       });
     }
 
-    // Load official Botpress Webchat script safely
-    this.loadBotpressScript()
+    // 2. Ensure Botpress script is loaded
+    this.ensureScriptLoaded()
       .then(() => {
-        this.initializeBotpress();
+        this.initBotpress();
       })
       .catch((err) => {
-        console.warn('Botpress Webchat unavailable or blocked:', err.message);
-        this.isLoaded = false;
+        console.warn('Botpress script failed to load from CDN:', err.message);
       });
   }
 
-  loadBotpressScript() {
+  ensureScriptLoaded() {
     return new Promise((resolve, reject) => {
-      // If already present on window
-      if (window.botpress || window.botpressWebChat) {
+      if (window.botpress) {
         resolve();
         return;
       }
 
-      const script = document.createElement('script');
-      script.id = 'botpress-webchat-script';
-      script.src = `${BOTPRESS_CONFIG.hostUrl}/inject.js`;
-      script.async = true;
+      // Check if script tag already exists in DOM
+      let script = document.getElementById('botpress-webchat-script');
+      if (!script) {
+        script = document.createElement('script');
+        script.id = 'botpress-webchat-script';
+        script.src = `${BOTPRESS_CONFIG.hostUrl}/inject.js`;
+        script.async = true;
+        document.head.appendChild(script);
+      }
 
-      const timeoutId = setTimeout(() => {
-        reject(new Error('Botpress Webchat script load timeout'));
+      const timeout = setTimeout(() => {
+        if (window.botpress) resolve();
+        else reject(new Error('Timeout loading Botpress inject.js'));
       }, 7000);
 
       script.onload = () => {
-        clearTimeout(timeoutId);
+        clearTimeout(timeout);
         resolve();
       };
 
       script.onerror = () => {
-        clearTimeout(timeoutId);
-        reject(new Error('Botpress script failed to load from CDN'));
+        clearTimeout(timeout);
+        reject(new Error('Network error loading Botpress inject.js'));
       };
-
-      document.body.appendChild(script);
     });
   }
 
-  initializeBotpress() {
-    // 1. Modern Botpress v2 API: window.botpress
+  initBotpress() {
+    if (this.isInitialized) return;
+
     if (window.botpress && typeof window.botpress.init === 'function') {
       try {
         window.botpress.init({
@@ -80,59 +84,48 @@ class OriviaChatbot {
             botName: BOTPRESS_CONFIG.botName
           }
         });
-        this.isLoaded = true;
-        return;
-      } catch (e) {
-        console.error('Error initializing window.botpress:', e);
+        this.isInitialized = true;
+      } catch (err) {
+        console.error('Botpress initialization error:', err);
       }
     }
-
-    // 2. Legacy/alternate Botpress API: window.botpressWebChat
-    if (window.botpressWebChat && typeof window.botpressWebChat.init === 'function') {
-      try {
-        window.botpressWebChat.init({
-          botId: BOTPRESS_CONFIG.botId,
-          clientId: BOTPRESS_CONFIG.clientId,
-          hostUrl: BOTPRESS_CONFIG.hostUrl,
-          botName: BOTPRESS_CONFIG.botName,
-          hideWidget: true
-        });
-        this.isLoaded = true;
-        return;
-      } catch (e) {
-        console.error('Error initializing window.botpressWebChat:', e);
-      }
-    }
-
-    this.isLoaded = false;
   }
 
-  toggleChat() {
-    // Close fallback card if currently open
+  openChat() {
+    // Hide fallback card if active
     if (this.fallbackCard) {
       this.fallbackCard.classList.remove('visible');
     }
 
-    // 1. Try window.botpress (v2)
+    // Modern window.botpress API
     if (window.botpress) {
-      if (typeof window.botpress.toggle === 'function') {
-        window.botpress.toggle();
-        return;
+      if (!this.isInitialized) {
+        this.initBotpress();
       }
+
       if (typeof window.botpress.open === 'function') {
         window.botpress.open();
         return;
       }
+      if (typeof window.botpress.toggle === 'function') {
+        window.botpress.toggle();
+        return;
+      }
     }
 
-    // 2. Try window.botpressWebChat (v1)
-    if (window.botpressWebChat && typeof window.botpressWebChat.sendEvent === 'function') {
-      window.botpressWebChat.sendEvent({ type: 'toggle' });
-      return;
-    }
-
-    // 3. Fallback notice if script failed or was blocked by browser
-    this.showFallbackMessage();
+    // If script hasn't arrived yet, attempt emergency load & open
+    this.ensureScriptLoaded()
+      .then(() => {
+        this.initBotpress();
+        if (window.botpress && typeof window.botpress.open === 'function') {
+          window.botpress.open();
+        } else {
+          this.showFallbackMessage();
+        }
+      })
+      .catch(() => {
+        this.showFallbackMessage();
+      });
   }
 
   setupFallbackContent() {
@@ -149,7 +142,7 @@ class OriviaChatbot {
     title.style.fontFamily = 'var(--font-serif)';
 
     const desc = document.createElement('p');
-    desc.textContent = 'Our conversational assistant is connecting or blocked by browser extensions. For bespoke itineraries and inquiries, contact our atelier directors directly.';
+    desc.textContent = 'Our real-time assistant is connecting or blocked by browser extensions. For bespoke itineraries and inquiries, contact our atelier directors directly.';
     desc.style.fontSize = '0.9rem';
     desc.style.marginBottom = '14px';
     desc.style.color = 'var(--color-text-muted)';
@@ -189,6 +182,7 @@ class OriviaChatbot {
   }
 }
 
+// Start immediately on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
   window.oriviaChatbot = new OriviaChatbot();
 });
